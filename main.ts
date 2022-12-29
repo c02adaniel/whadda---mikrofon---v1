@@ -5,6 +5,7 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         led_status = 0
     }
 })
+let range: neopixel.Strip = null
 let mic = 0
 let led_status = 0
 let strip = neopixel.create(DigitalPin.P2, 26, NeoPixelMode.RGB)
@@ -29,9 +30,8 @@ basic.forever(function () {
 })
 control.inBackground(function () {
     while (led_status == 1) {
-        for (let index = 0; index <= mic / 255 * 26; index++) {
-            strip.setPixelColor(index, neopixel.colors(NeoPixelColors.Red))
-        }
+        range = strip.range(0, mic / 255 * 26)
+        range.showRainbow(1, 360)
         strip.show()
         basic.pause(100)
         strip.clear()
