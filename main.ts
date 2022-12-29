@@ -29,13 +29,11 @@ basic.forever(function () {
 })
 control.inBackground(function () {
     while (led_status == 1) {
-        if (true) {
-            for (let index = 0; index <= mic / 255 * 26; index++) {
-                strip.setPixelColor(index, neopixel.colors(NeoPixelColors.Red))
-            }
-            strip.show()
-            basic.pause(50)
+        for (let index = 0; index <= mic / 255 * 26; index++) {
+            strip.setPixelColor(index, neopixel.colors(NeoPixelColors.Red))
         }
+        strip.show()
+        basic.pause(100)
         strip.clear()
     }
 })
